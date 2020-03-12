@@ -4,6 +4,7 @@ const createStore = redux.createStore;
 
 //create action
 const BUY_CAKE = 'BUY_CAKE';
+const BUY_ICE_CREAM = 'BUY_ICE_CREAM';
 
 //action creator
 function buyCake() {
@@ -13,19 +14,69 @@ function buyCake() {
     }
 }
 
-//create reducer: (previousState, action) => newState
-//initial state
-const initialState = {
-    numOfCakes: 10
+function buyIceCream() {
+    return { //define action 
+        type: BUY_ICE_CREAM,
+        info: 'First Redux action'
+    }
 }
 
-const reducer = (state = initialState, action) => {
+//create reducer: (previousState, action) => newState
+//initial state
+// const initialState = {
+//     numOfCakes: 10,
+//     numOfIceCreams: 20
+// }
+
+const initialCakeState = {
+    numOfCakes: 10,
+}
+
+const initialIceCreamState = {
+    numOfIceCreams: 20
+}
+
+// const reducer = (state = initialState, action) => {
+
+//     switch(action.type) {
+//         case BUY_CAKE: return {
+//             //if multiple property: let's copy the initial state using spread operator
+//             ...state,
+//             numOfCakes: state.numOfCakes - 1
+//         }
+        
+//         case BUY_ICE_CREAM: return {
+//             //if multiple property: let's copy the initial state using spread operator
+//             ...state,
+//             numOfIceCreams: state.numOfIceCreams - 1
+//         }
+
+//         default: return state;
+//     }
+    
+// }
+
+const cakeReducer = (state = initialCakeState, action) => {
 
     switch(action.type) {
         case BUY_CAKE: return {
             //if multiple property: let's copy the initial state using spread operator
             ...state,
             numOfCakes: state.numOfCakes - 1
+        }
+
+        default: return state;
+    }
+    
+}
+
+const iceCreamReducer = (state = initialIceCreamState, action) => {
+
+    switch(action.type) {
+        case BUY_ICE_CREAM: return {
+            //if multiple property: let's copy the initial state using spread operator
+            ...state,
+            numOfIceCreams: state.numOfIceCreams - 1
         }
 
         default: return state;
@@ -44,6 +95,7 @@ store.subscribe(() => console.log('Updated state ', store.getState()));
 
 //3. Allows state to be updated via dispatch(action)
 store.dispatch(buyCake());
+store.dispatch(buyIceCream());
 
 //5. Handlers unregistering of listeners via the function returned by subscribe(listener)
 //unsubscribe();
