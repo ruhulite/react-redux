@@ -19,5 +19,6 @@
   "homepage": "https://github.com/ruhulite/react-redux#readme",
   "dependencies": {
     "redux": "^4.0.5"
-  }
+  },
+  "devDependencies": {}
 }
