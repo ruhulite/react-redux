@@ -139,6 +139,36 @@ Responsibility -
  * 1. As soon as an action was dispatched, the state was immediately updated
  * 2. If you dispatch the BUY_CAKE action, the numOfCakes was right away decremented by 1 
  * Same as BUY_ICECREAM as well
+ * 
+ * Our Application
+ * 1. Fetches a list of users from an API end point and stores it in the redux store
+ * let's try to get an idea of how an "STATE" is going to reply: state?
+ * What are the different ACTIONS: ACTIONS?
+ * And how the reducer required: REDUCER?
+ * State
+ * When data Fetching we go with three properties of State object 
+ state = {
+    loading: true, //display a loading spinner in your component
+    data: [], //list of users/data
+    error: '' //display error to the user
+ }
+
+ Actions
+ FETCH_USERS_REQUEST - Fetch list of users
+ FETCH_USERS_SUCCESS - Fetched successfully (depended on the first step)
+ FETCH_USERS_FAILURE - Error fetching the data (depended on the first step)
+
+ Reducers
+ case: FETCH_USERS_REQUEST
+ loading: true
+
+ case: FETCH_USERS_SUCCESS
+ loading: false
+ users: data(from API)
+
+ case: FETCH_USERS_FAILURE
+ loading: false
+ error: error(from API)
  * *
  * *
  * *
